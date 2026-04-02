@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Configurar CSV</title>
+  <style>
+    body { font-family: sans-serif; font-size: 13px; margin: 10px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 4px; }
+    input[type="text"] { width: 100%; box-sizing: border-box; }
+    .numero { white-space: nowrap; font-size: 11px; }
+    #status { margin-top: 8px; font-size: 11px; }
+    #tabelaContainer { max-height: 420px; overflow: auto; }
+    .row { margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <button id="btnOpenWindow" type="button">Abrir em janela</button>
+  
+  <hr>
+  
+  <p>Selecione o arquivo CSV local:</p>
+  <input id="csvFile" type="file" accept=".csv,text/csv">
+
+  <div id="status"></div>
+
+  <hr>
+
+  <div class="row">
+    <button id="btnExportar" type="button">Exportar CSV</button>
+    <button id="btnSalvar" type="button">Salvar alterações</button>
+	<button id="btnNovoProcesso" type="button">Novo processo</button>
+  </div>
+
+  <h4>Editar tags</h4>
+  <div id="tabelaContainer"></div>
+
+  <script src="js/popup.js"></script>
+</body>
+</html>

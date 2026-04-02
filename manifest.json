@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "SEI TAG",
+  "description": "Etiqueta por CSV Local",
+  "version": "1.0.5",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["https://sei.transportes.gov.br/sei/controlador.php?acao*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Configurar CSV"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://sei.transportes.gov.br/sei/controlador.php?acao*"],
+      "js": [
+       "js/tblsProcessos.js"],
+      "css": [
+       "css/tag.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
