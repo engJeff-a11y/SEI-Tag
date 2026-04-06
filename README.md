@@ -21,13 +21,13 @@ A versão em produção 2.x, busca retirar a limitação da base de dados local 
    
 2.1. A base de dados deverá ser composta por duas abas principais no mesmo arquivo Google Sheets, denominadas Processos_Registrados e Andamentos.
 
-2.2. A aba Processos_Registrados terá a finalidade de cadastro único dos processos e conterá os campos Processo, Tag e Status, sendo Processo a chave principal e não devendo haver duplicidade desse valor na referida aba.
+2.2. A aba Processos_Registrados terá a finalidade de cadastro único dos processos e conterá os campos Processo, Ativo, Tag e Status, sendo Processo a chave principal e não devendo haver duplicidade desse valor na referida aba.
 
 2.3. A aba Andamentos terá a finalidade de registro documental vinculado ao processo e conterá os campos Processo, Data, Doc anterior, N_SEI, Assunto, Prazo, Nome_do_documento, Bloco SEI, Tag_Doc, Status_Doc, Data_Assinatura e Observacoes.
 
 2.4. O campo Processo na aba Andamentos será obrigatório para vinculação com a aba Processos_Registrados, permitindo que um mesmo processo possua múltiplos registros documentais associados.
 
-2.5. A estrutura funcional final adotará quatro marcações de negócio, quais sejam: Tag, Status, Tag Doc. e Status Doc., sendo as duas primeiras atributos do processo e as duas últimas atributos do andamento ou documento.
+2.5. A estrutura funcional final adotará cinco marcações de negócio, quais sejam: Ativo, Tag, Status, Tag Doc. e Status Doc., sendo as três primeiras atributos do processo e as duas últimas atributos do andamento ou documento.
 
 2.6. Essa separação tem por finalidade eliminar redundância de dados, evitar repetição indevida de Tag e Status em cada linha documental e permitir manutenção mais consistente da informação central da extensão.
 
@@ -35,19 +35,21 @@ A versão em produção 2.x, busca retirar a limitação da base de dados local 
 
 3.1. Inclusão de processo. A inclusão de novo processo deverá criar registro apenas na aba Processos_Registrados, com preenchimento mínimo de Processo, podendo Tag e Status ser definidos no mesmo momento ou posteriormente.
 
-3.2. Inclusão de andamento. A inclusão de novo andamento somente poderá ocorrer se o número do processo já estiver registrado em Processos_Registrados, devendo o novo lançamento ser gravado exclusivamente na aba Andamentos.
+3.2. o campo de estado Ativo, deverá ser validado automáticamente, conforme os processos localizados na página de controle do site.
 
-3.3. Edição de processo. Os campos Tag e Status somente poderão ser editados na camada lógica correspondente à aba Processos_Registrados, ainda que sua visualização ocorra em outras telas do popup.
+3.3. Inclusão de andamento. A inclusão de novo andamento somente poderá ocorrer se o número do processo já estiver registrado em Processos_Registrados, devendo o novo lançamento ser gravado exclusivamente na aba Andamentos.
 
-3.4. Edição de andamento. Os campos Tag_Doc, Status_Doc e os demais metadados documentais somente poderão ser editados na camada lógica correspondente à aba Andamentos.
+3.4. Edição de processo. Os campos Tag e Status somente poderão ser editados na camada lógica correspondente à aba Processos_Registrados, ainda que sua visualização ocorra em outras telas do popup.
 
-3.5. Salvamento. As alterações realizadas no popup deverão permanecer em estado local até o acionamento do comando Salvar alterações, quando então a extensão executará gravação nos intervalos pertinentes da planilha mediante operações de atualização de valores.
+3.5. Edição de andamento. Os campos Tag_Doc, Status_Doc e os demais metadados documentais somente poderão ser editados na camada lógica correspondente à aba Andamentos.
 
-3.6. Sincronização. Após cada operação de salvamento, a extensão deverá reler os intervalos afetados para confirmar o conteúdo persistido e atualizar a interface com o estado mais recente da base central.
+3.6. Salvamento. As alterações realizadas no popup deverão permanecer em estado local até o acionamento do comando Salvar alterações, quando então a extensão executará gravação nos intervalos pertinentes da planilha mediante operações de atualização de valores.
 
-3.7. Sessão e acesso. Enquanto não houver autenticação válida, a extensão deverá bloquear leitura, gravação e sincronização em Google Sheets, uma vez que o acesso depende de token e escopos concedidos à extensão.
+3.7. Sincronização. Após cada operação de salvamento, a extensão deverá reler os intervalos afetados para confirmar o conteúdo persistido e atualizar a interface com o estado mais recente da base central.
 
-3.8. Escopos. A configuração de acesso deverá observar escopos compatíveis com leitura e escrita em planilhas, conforme a documentação oficial da Sheets API.
+3.8. Sessão e acesso. Enquanto não houver autenticação válida, a extensão deverá bloquear leitura, gravação e sincronização em Google Sheets, uma vez que o acesso depende de token e escopos concedidos à extensão.
+
+3.9. Escopos. A configuração de acesso deverá observar escopos compatíveis com leitura e escrita em planilhas, conforme a documentação oficial da Sheets API.
 
 4. Interface do popup
 
