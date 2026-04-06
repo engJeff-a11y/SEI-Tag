@@ -1,9 +1,3 @@
-.tag1 {
-  font-weight: bold;
-  color: rgb(75, 0, 130);
-}
-
-.tag2 {
-  font-weight: bold;
-  color: rgb(130, 0, 130);
-}
+/* tag.css — Estilos do content script aplicados nas tabelas do SEI */
+/* Escopo: tblsProcessos.js */
+/* TODO: estilos de tag1, tag2, indicadores visuais nas tabelas tblProcessosRecebidos e tblProcessosGerados */

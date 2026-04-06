@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Configurar CSV</title>
-  <style>
-    body { font-family: sans-serif; font-size: 13px; margin: 10px; }
-    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
-    th, td { border: 1px solid #ccc; padding: 4px; }
-    input[type="text"] { width: 100%; box-sizing: border-box; }
-    .numero { white-space: nowrap; font-size: 11px; }
-    #status { margin-top: 8px; font-size: 11px; }
-    #tabelaContainer { max-height: 420px; overflow: auto; }
-    .row { margin: 8px 0; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEI Tag</title>
+  <link rel="stylesheet" href="css/popup.css" />
+  <link rel="stylesheet" href="css/header.css" />
 </head>
 <body>
-  <button id="btnOpenWindow" type="button">Abrir em janela</button>
-  
-  <hr>
-  
-  <p>Selecione o arquivo CSV local:</p>
-  <input id="csvFile" type="file" accept=".csv,text/csv">
 
-  <div id="status"></div>
+  <!-- Cabeçalho global fixo -->
+  <header id="global-header">
+    <!-- Renderizado por js/popup.js -->
+  </header>
 
-  <hr>
+  <!-- Container de telas (roteamento interno via JS) -->
+  <main id="app-container">
+    <!-- Telas injetadas dinamicamente:
+         - tela-processos        (js/telas/tela-processos.js)
+         - tela-consulta         (js/telas/tela-consulta.js)
+         - tela-nao-registrado   (js/telas/tela-nao-registrado.js)
+         - tela-processo         (js/telas/tela-processo.js)
+    -->
+  </main>
 
-  <div class="row">
-    <button id="btnExportar" type="button">Exportar CSV</button>
-    <button id="btnSalvar" type="button">Salvar alterações</button>
-	<button id="btnNovoProcesso" type="button">Novo processo</button>
-  </div>
-
-  <h4>Editar tags</h4>
-  <div id="tabelaContainer"></div>
-
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/sheets.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/telas/tela-processos.js"></script>
+  <script src="js/telas/tela-consulta.js"></script>
+  <script src="js/telas/tela-nao-registrado.js"></script>
+  <script src="js/telas/tela-processo.js"></script>
   <script src="js/popup.js"></script>
+
 </body>
 </html>

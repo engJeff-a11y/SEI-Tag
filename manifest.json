@@ -1,21 +1,27 @@
 {
   "manifest_version": 3,
   "name": "SEI TAG",
-  "description": "Etiqueta por CSV Local",
-  "version": "1.0.5",
-  "permissions": ["storage", "scripting"],
-  "host_permissions": ["https://sei.transportes.gov.br/sei/controlador.php?acao*"],
+  "description": "Gestão de processos SEI com sincronização via Google Sheets",
+  "version": "2.0.0",
+  "permissions": ["storage", "scripting", "identity"],
+  "oauth2": {
+    "client_id": "SEU_CLIENT_ID_AQUI.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets"
+    ]
+  },
+  "host_permissions": [
+    "https://sei.transportes.gov.br/sei/controlador.php?acao*"
+  ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Configurar CSV"
+    "default_title": "SEI Tag"
   },
   "content_scripts": [
     {
       "matches": ["https://sei.transportes.gov.br/sei/controlador.php?acao*"],
-      "js": [
-       "js/tblsProcessos.js"],
-      "css": [
-       "css/tag.css"],
+      "js": ["js/tblsProcessos.js"],
+      "css": ["css/tag.css"],
       "run_at": "document_idle"
     }
   ]
